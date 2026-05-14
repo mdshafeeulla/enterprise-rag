@@ -1,4 +1,4 @@
-# core/pipeline.py
+# core/pipeline.py — RAG Orchestration Pipeline
 import time
 
 from core.config import cfg

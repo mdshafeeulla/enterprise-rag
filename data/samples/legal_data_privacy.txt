@@ -1,0 +1,21 @@
+# Legal - Data Privacy and NDA Policy
+
+## Overview
+Protection of sensitive company and client data is a legal requirement. All employees must sign a Non-Disclosure Agreement (NDA) upon joining.
+
+## Data Classification
+1. **Public**: Information intended for general consumption.
+2. **Internal**: Information for company use only (e.g., internal memos).
+3. **Confidential**: Sensitive data (e.g., client lists, financial records).
+4. **Restricted**: Highly sensitive data (e.g., trade secrets, M&A plans).
+
+## NDA Obligations
+- Employees must not disclose confidential information to any third party during or after their employment.
+- All company-provided equipment must be returned upon termination of employment.
+
+## Handling Data
+- Encrypt all files containing Personal Identifiable Information (PII).
+- Do not use personal cloud storage services (e.g., Dropbox, Google Drive) for company documents.
+
+## Compliance
+Violations of this policy may result in disciplinary action, including termination and legal proceedings.
