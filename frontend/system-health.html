@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aegis Intelligence - System Health</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#131313",
+                        "error-container": "#93000a",
+                        "surface-tint": "#00dbe9",
+                        "surface-bright": "#393939",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-secondary-fixed": "#23005c",
+                        "primary-fixed": "#7df4ff",
+                        "outline": "#849495",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "inverse-on-surface": "#303030",
+                        "on-primary-fixed-variant": "#004f54",
+                        "background": "#131313",
+                        "tertiary": "#f9f5f5",
+                        "on-primary-fixed": "#002022",
+                        "on-primary-container": "#006970",
+                        "inverse-primary": "#006970",
+                        "surface-container-highest": "#353535",
+                        "surface-container": "#1f1f1f",
+                        "primary": "#dbfcff",
+                        "on-background": "#e2e2e2",
+                        "inverse-surface": "#e2e2e2",
+                        "outline-variant": "#3b494b",
+                        "on-secondary-container": "#c4abff",
+                        "on-secondary": "#3c0091",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-surface-variant": "#b9cacb",
+                        "surface-variant": "#353535",
+                        "on-error": "#690005",
+                        "secondary-fixed": "#e9ddff",
+                        "secondary": "#d0bcff",
+                        "on-tertiary-container": "#605e5e",
+                        "tertiary-container": "#dcd9d8",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary": "#00363a",
+                        "primary-container": "#00f0ff",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface": "#e2e2e2",
+                        "surface-container-lowest": "#0e0e0e",
+                        "tertiary-fixed": "#e5e2e1",
+                        "tertiary-fixed-dim": "#c9c6c5",
+                        "on-tertiary": "#313030",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#571bc1",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "surface-container-low": "#1b1b1b",
+                        "surface": "#131313"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "stack-lg": "48px",
+                        "stack-md": "24px",
+                        "base": "8px",
+                        "stack-sm": "12px",
+                        "container-margin": "40px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Outfit"],
+                        "body-lg": ["Outfit"],
+                        "headline-lg-mobile": ["Outfit"],
+                        "label-sm": ["Outfit"],
+                        "headline-md": ["Outfit"],
+                        "headline-lg": ["Outfit"],
+                        "body-md": ["Outfit"],
+                        "display-md": ["Outfit"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-md": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #000000; }
+        .glass-card {
+            background-color: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(40px);
+            border: 1px solid #1f1f1f;
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(0, 240, 255, 0.5);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.05);
+        }
+        .text-glow { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+        .border-glow { box-shadow: 0 0 15px rgba(0, 240, 255, 0.2) inset, 0 0 15px rgba(0, 240, 255, 0.2); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar -->
+<nav class="hidden md:flex fixed left-0 top-0 h-full w-64 bg-surface-container-lowest/90 backdrop-blur-2xl border-r border-outline-variant/20 shadow-2xl shadow-primary-container/5 flex-col pt-20 pb-8 z-40">
+<div class="px-gutter mb-12">
+<h1 class="font-headline-md text-headline-md text-primary-fixed-dim">Terminal v4.0</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mt-1">Mission Critical</p>
+</div>
+<div class="flex-1 px-4 space-y-2">
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all hover:border-primary-fixed/50 hover:text-primary-fixed-dim group" href="hyperparameters.html">
+<span class="material-symbols-outlined text-outline group-hover:text-primary-fixed-dim transition-colors" style="font-variation-settings: 'wght' 300;">hub</span>
+<span class="font-label-sm text-label-sm">Neural Mesh</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all hover:border-primary-fixed/50 hover:text-primary-fixed-dim group" href="terminal.html">
+<span class="material-symbols-outlined text-outline group-hover:text-primary-fixed-dim transition-colors" style="font-variation-settings: 'wght' 300;">terminal</span>
+<span class="font-label-sm text-label-sm">Query Terminal</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all hover:border-primary-fixed/50 hover:text-primary-fixed-dim group" href="source-vault.html">
+<span class="material-symbols-outlined text-outline group-hover:text-primary-fixed-dim transition-colors" style="font-variation-settings: 'wght' 300;">database</span>
+<span class="font-label-sm text-label-sm">Source Vault</span>
+</a>
+<!-- Active Tab -->
+<a class="bg-primary-container/10 text-primary-container border-r-2 border-primary-container px-4 py-3 flex items-center gap-3 rounded-l-lg transition-transform scale-95 border-glow" href="system-health.html">
+<span class="material-symbols-outlined text-primary-container text-glow" style="font-variation-settings: 'wght' 400, 'FILL' 1;">monitoring</span>
+<span class="font-label-sm text-label-sm text-glow">System Health</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all hover:border-primary-fixed/50 hover:text-primary-fixed-dim group" href="access-control.html">
+<span class="material-symbols-outlined text-outline group-hover:text-primary-fixed-dim transition-colors" style="font-variation-settings: 'wght' 300;">admin_panel_settings</span>
+<span class="font-label-sm text-label-sm">Access Control</span>
+</a>
+</div>
+<div class="px-6 mt-auto">
+<button class="w-full bg-primary-container text-on-primary-container font-label-sm text-label-sm py-3 rounded hover:bg-primary-fixed-dim transition-colors uppercase tracking-widest font-bold">Initialize RAG</button>
+</div>
+<div class="mt-8 px-4 space-y-2 border-t border-outline-variant/20 pt-6">
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-outline" style="font-variation-settings: 'wght' 300;">help</span>
+<span class="font-label-sm text-label-sm">Docs</span>
+</a>
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-outline" style="font-variation-settings: 'wght' 300;">contact_support</span>
+<span class="font-label-sm text-label-sm">Support</span>
+</a>
+</div>
+</nav>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-background/80 backdrop-blur-xl border-b border-outline-variant/30 md:pl-[calc(16rem+24px)]">
+<div class="flex-1">
+<h2 class="font-headline-md text-headline-md text-on-surface md:hidden">System Health</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary-fixed transition-colors hover:bg-surface-variant/20 p-2 rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary-fixed transition-colors hover:bg-surface-variant/20 p-2 rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant/50 overflow-hidden ml-2">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A close-up portrait of a professional individual in a dimly lit, futuristic setting. The lighting is cool, with subtle cyan reflections highlighting the subject's features, aligning with a high-tech, cyberpunk-inspired corporate aesthetic. The background is pure OLED black, out of focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpsnvnauKvZw_rfmzV-0jxnYAXqYk0lHWI467bxLYsi8YXZzVoGJgJv2HSIt2ct8PevcJpc3Qew6haM8gmPCRdFl7U-XSF9PHBa-_d8CI_ycvlSw-kFueyMZPXlQRuBvQpos4uYsF8SZBew9t75O-s3DSn_Qw37-D3qE2rBStPLGaL3KoeHaJTVbx2K5ckLWP_ShDZ32cC4N2ynlEWGvaAZ1muNWTHD0UJwDHhmgYuFwgl3o-vFnoF2NgV7EdcEOwLWixvjEjp64oV"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full md:pl-64 pt-24 pb-12 px-4 md:px-container-margin">
+<div class="max-w-[1440px] mx-auto">
+<header class="mb-stack-lg">
+<h2 class="font-display-md text-display-md text-on-surface mb-2">System Health</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time telemetry and resource utilization.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- GPU Usage Card -->
+<div class="glass-card rounded-xl p-6 lg:col-span-2 relative overflow-hidden group">
+<!-- Subtle inner glow element -->
+<div class="absolute -top-24 -right-24 w-48 h-48 bg-primary-container/10 rounded-full blur-3xl group-hover:bg-primary-container/20 transition-all duration-500"></div>
+<div class="flex justify-between items-start mb-6 relative z-10">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">memory</span>
+                                Neural Core (GPU)
+                            </h3>
+<p id="gpu-name" class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mt-1">Aegis A100 Tensor Cluster</p>
+</div>
+<div class="text-right">
+<span class="block font-display-md text-display-md text-primary-container text-glow" id="cpu-percent">--%</span>
+<span class="font-label-sm text-label-sm text-error flex items-center justify-end gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">device_thermostat</span>
+                                <span id="system-status">Checking...</span>
+                            </span>
+</div>
+</div>
+<!-- Faux Line Graph (Simplified for dynamic update) -->
+<div class="h-32 w-full mt-4 bg-surface-container-high/20 rounded-lg overflow-hidden relative z-10 border border-outline-variant/10">
+    <div id="cpu-bar" class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-primary-container/20 to-transparent border-t border-primary-container/50 transition-all duration-500" style="height: 0%;"></div>
+    <div class="absolute inset-0 flex items-center justify-center font-mono text-[10px] text-primary-container/30 tracking-widest uppercase">Telemetry Stream Active</div>
+</div>
+</div>
+<!-- Memory Usage Card -->
+<div class="glass-card rounded-xl p-6 relative overflow-hidden">
+<div class="flex justify-between items-start mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed-dim">data_usage</span>
+                            Volatile Memory
+                        </h3>
+</div>
+<div class="mb-8">
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Allocated</span>
+<span class="font-headline-md text-headline-md text-secondary-fixed-dim" id="ram-text">--<span class="text-on-surface-variant text-sm">/--GB</span></span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div id="ram-bar" class="h-full bg-secondary-fixed-dim w-0 rounded-full shadow-[0_0_10px_rgba(208,188,255,0.5)] transition-all duration-500"></div>
+</div>
+</div>
+<div class="border-t border-outline-variant/20 pt-4">
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant">System State</span>
+<span id="system-state-badge" class="font-label-sm text-label-sm text-primary-fixed-dim px-2 py-1 bg-primary-fixed-dim/10 rounded border border-primary-fixed-dim/20">Optimal</span>
+</div>
+</div>
+</div>
+<!-- Storage Usage Card (Replaced Data Telemetry) -->
+<div class="glass-card rounded-xl p-6 lg:col-span-3 mt-4">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-on-surface-variant">database</span>
+                        Storage Infrastructure
+                    </h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary-container">storage</span> Total Capacity
+                            </span>
+<span class="font-display-md text-display-md text-on-surface" id="disk-total">-- <span class="font-body-md text-on-surface-variant">GB</span></span>
+</div>
+<div class="flex flex-col border-l border-outline-variant/20 pl-8">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary-fixed-dim">analytics</span> Used Space
+                            </span>
+<span class="font-display-md text-display-md text-on-surface" id="disk-used">-- <span class="font-body-md text-on-surface-variant">GB</span></span>
+</div>
+<div class="flex flex-col border-l border-outline-variant/20 pl-8">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-2">Utilization</span>
+<span class="font-display-md text-display-md text-on-surface" id="disk-percent">--%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+<script>
+async function updateHealth() {
+    try {
+        const response = await fetch('/system/health');
+        const data = await response.json();
+        
+        // Update CPU (using it for Neural Core if GPU data is missing, otherwise showing actual GPU)
+        const gpuUsage = data.gpu.usage;
+        document.getElementById('cpu-percent').textContent = gpuUsage.toFixed(0) + '%';
+        document.getElementById('cpu-bar').style.height = gpuUsage + '%';
+        document.getElementById('system-status').textContent = data.gpu.temp + '°C';
+        
+        // Update GPU Model Name
+        const gpuNameEl = document.getElementById('gpu-name');
+        if (data.gpu.name !== "N/A") {
+            gpuNameEl.textContent = data.gpu.name;
+        }
+
+        // Update RAM
+        document.getElementById('ram-text').innerHTML = `${data.ram.used}<span class="text-on-surface-variant text-sm">/${data.ram.total}GB</span>`;
+        document.getElementById('ram-bar').style.width = data.ram.percent + '%';
+        
+        // Update System State
+        const badge = document.getElementById('system-state-badge');
+        badge.textContent = data.system_status;
+        if (data.system_status === 'Stressed') {
+            badge.className = 'font-label-sm text-label-sm text-error px-2 py-1 bg-error/10 rounded border border-error/20';
+        } else {
+            badge.className = 'font-label-sm text-label-sm text-primary-fixed-dim px-2 py-1 bg-primary-fixed-dim/10 rounded border border-primary-fixed-dim/20';
+        }
+        
+        // Update Disk
+        document.getElementById('disk-total').innerHTML = `${data.disk.total} <span class="font-body-md text-on-surface-variant">GB</span>`;
+        document.getElementById('disk-used').innerHTML = `${data.disk.used} <span class="font-body-md text-on-surface-variant">GB</span>`;
+        document.getElementById('disk-percent').textContent = data.disk.percent.toFixed(0) + '%';
+        
+    } catch (error) {
+        console.error('Failed to fetch system health:', error);
+    }
+}
+
+// Initial fetch and then interval
+updateHealth();
+setInterval(updateHealth, 2000);
+</script>
+</body></html>>

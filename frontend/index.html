@@ -1,0 +1,182 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Aegis Intelligence - Cinematic Entry</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#131313",
+                        "inverse-primary": "#006970",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary": "#00363a",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#c4abff",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "primary-fixed": "#7df4ff",
+                        "tertiary": "#f9f5f5",
+                        "primary-container": "#00f0ff",
+                        "on-surface": "#e2e2e2",
+                        "tertiary-fixed-dim": "#c9c6c5",
+                        "on-error": "#690005",
+                        "surface-variant": "#353535",
+                        "surface-container-low": "#1b1b1b",
+                        "secondary": "#d0bcff",
+                        "on-surface-variant": "#b9cacb",
+                        "on-primary-container": "#006970",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "outline-variant": "#3b494b",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary": "#3c0091",
+                        "tertiary-container": "#dcd9d8",
+                        "surface-container-high": "#2a2a2a",
+                        "outline": "#849495",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "surface-bright": "#393939",
+                        "secondary-container": "#571bc1",
+                        "on-tertiary-container": "#605e5e",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-background": "#e2e2e2",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-container-highest": "#353535",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#e5e2e1",
+                        "surface-container": "#1f1f1f",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-dim": "#131313",
+                        "inverse-surface": "#e2e2e2",
+                        "on-tertiary": "#313030",
+                        "surface-tint": "#00dbe9",
+                        "primary": "#dbfcff",
+                        "inverse-on-surface": "#303030",
+                        "on-primary-fixed": "#002022",
+                        "surface": "#131313"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "stack-md": "24px",
+                        "stack-sm": "12px",
+                        "container-margin": "40px",
+                        "stack-lg": "48px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-md": ["Outfit"],
+                        "body-md": ["Outfit"],
+                        "display-lg": ["Outfit"],
+                        "headline-md": ["Outfit"],
+                        "body-lg": ["Outfit"],
+                        "headline-lg": ["Outfit"],
+                        "headline-lg-mobile": ["Outfit"],
+                        "label-sm": ["Outfit"]
+                    },
+                    "fontSize": {
+                        "display-md": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom glowing border animation for active states as per brand guidelines */
+        @keyframes neon-pulse {
+            0% { border-color: #1f1f1f; box-shadow: 0 0 0 rgba(0, 240, 255, 0); }
+            50% { border-color: #00f0ff; box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); }
+            100% { border-color: #1f1f1f; box-shadow: 0 0 0 rgba(0, 240, 255, 0); }
+        }
+        .hover-neon:hover {
+            animation: neon-pulse 3s infinite;
+        }
+    </style>
+<style data-stitch-cursor="">*{cursor:crosshair!important}[contenteditable="true"]:focus,.cursor-text:focus{cursor:text!important}</style><style data-stitch-scroll-lock="">html,body{overflow:hidden!important}</style></head>
+<body class="bg-background text-on-surface min-h-screen w-full overflow-hidden flex items-center justify-center relative font-body-md">
+<!-- Background Layer: Simulated Neural Mesh Particle System -->
+<div class="absolute inset-0 z-0 w-full h-full bg-cover bg-center opacity-40 mix-blend-screen" data-alt="A highly detailed abstract digital background simulating a neural mesh particle system. Deep OLED black background space is filled with scattered, glowing electric blue and slate-gray nodes connected by ultra-thin, geometric web-like lines. The composition implies immense computational depth through optical layering and slight focus blur on distant particles, evoking a futuristic, high-stakes intelligence and pre-emptive mission-critical environment. Cinematic lighting with subtle cyan gradients." style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDzYhdiUlzrnW8IQBoxEudDsq7eLyvFqcFRwMMbM2UlBRIV7NN4yXW1DaIMu996FYFliqnStZkNNHh5zgsbfFx1gYRQhf5OPXr1WEBKR59tSoPab7jqNEsyNOaaSaolLORkOLrasp2iswKsD4qYdc64ryV7PswmfLg5E_dam7fKiG9qBWJsCVnZQ-9x-1vzIoV1YRBShS3UHlVdHQzklFWoEpVhc0LCZjgnIBdMAJ3_vfim5XmS17_2gGWZIcSU4Ewi6DzWI8w_Ehpb&quot;);">
+</div>
+<!-- Gradient Overlay for Depth -->
+<div class="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-background/80 to-background"></div>
+<!-- Main Content Container -->
+<main class="relative z-10 w-full max-w-5xl px-gutter mx-auto flex flex-col items-center">
+<!-- Header Section -->
+<div class="text-center mb-stack-lg flex flex-col items-center gap-stack-sm">
+<div class="flex items-center gap-2 text-primary-fixed-dim">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">shield_lock</span>
+<span class="font-label-sm text-label-sm tracking-[0.2em] uppercase">MSU<br>ENTERPRISES</span>
+</div>
+<h1 class="font-display-md text-display-md md:font-display-lg md:text-display-lg text-on-surface tracking-tighter">
+                Welcome to Enterprise RAG</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-4">
+                Initialize session protocol. Select your operational vector to proceed to the main terminal.
+            </p>
+</div>
+<!-- Choice Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md w-full">
+<!-- Enterprise User Card -->
+<button onclick="window.location.href='sectors.html'" class="group relative flex flex-col items-start text-left p-8 rounded-xl bg-surface-container-lowest/60 backdrop-blur-[40px] border border-surface-container hover:border-primary-container transition-all duration-500 overflow-hidden hover-neon w-full h-full min-h-[280px] cursor-pointer">
+<!-- Inner Glow Background on Hover -->
+<div class="absolute inset-0 bg-primary-container/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="flex items-center justify-center w-14 h-14 rounded-lg bg-surface-container-high border border-outline-variant/30 mb-auto group-hover:bg-primary-container/10 group-hover:border-primary-container/50 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-container transition-colors text-3xl">corporate_fare</span>
+</div>
+<div class="mt-8 relative z-10 w-full">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2 flex items-center justify-between w-full">
+                        Enterprise User
+                        <span class="material-symbols-outlined text-outline-variant group-hover:text-primary-container transform group-hover:translate-x-1 transition-all">arrow_forward</span>
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Access strategic insights, knowledge graphs, and cross-departmental telemetry data.
+                    </p>
+</div>
+</button>
+<!-- System Administrator Card -->
+<button onclick="window.location.href='admin-login.html'" class="group relative flex flex-col items-start text-left p-8 rounded-xl bg-surface-container-lowest/60 backdrop-blur-[40px] border border-surface-container hover:border-primary-container transition-all duration-500 overflow-hidden hover-neon w-full h-full min-h-[280px] cursor-pointer">
+<!-- Inner Glow Background on Hover -->
+<div class="absolute inset-0 bg-primary-container/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="flex items-center justify-center w-14 h-14 rounded-lg bg-surface-container-high border border-outline-variant/30 mb-auto group-hover:bg-primary-container/10 group-hover:border-primary-container/50 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-container transition-colors text-3xl">admin_panel_settings</span>
+</div>
+<div class="mt-8 relative z-10 w-full">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2 flex items-center justify-between w-full">
+                        System Administrator
+                        <span class="material-symbols-outlined text-outline-variant group-hover:text-primary-container transform group-hover:translate-x-1 transition-all">arrow_forward</span>
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Manage neural mesh infrastructure, access control nodes, and system health metrics.
+                    </p>
+</div>
+</button>
+</div>
+</main>
+
+
+</body></html>

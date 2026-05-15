@@ -1,0 +1,196 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Aether Ultra - Administrator Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#1b1b1b",
+                        "primary": "#dbfcff",
+                        "on-secondary-fixed": "#23005c",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "primary-container": "#00f0ff",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-high": "#2a2a2a",
+                        "outline-variant": "#3b494b",
+                        "inverse-surface": "#e2e2e2",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#353535",
+                        "tertiary-fixed-dim": "#c9c6c5",
+                        "primary-fixed-dim": "#00dbe9",
+                        "primary-fixed": "#7df4ff",
+                        "surface-container": "#1f1f1f",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-surface-variant": "#b9cacb",
+                        "secondary-container": "#571bc1",
+                        "on-primary-fixed-variant": "#004f54",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-primary-fixed": "#002022",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "tertiary": "#f9f5f5",
+                        "on-tertiary-container": "#605e5e",
+                        "on-secondary": "#3c0091",
+                        "error-container": "#93000a",
+                        "surface-container-highest": "#353535",
+                        "on-background": "#e2e2e2",
+                        "surface-bright": "#393939",
+                        "tertiary-container": "#dcd9d8",
+                        "inverse-primary": "#006970",
+                        "on-surface": "#e2e2e2",
+                        "surface-dim": "#131313",
+                        "outline": "#849495",
+                        "secondary": "#d0bcff",
+                        "on-primary": "#00363a",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-tertiary": "#313030",
+                        "surface-tint": "#00dbe9",
+                        "inverse-on-surface": "#303030",
+                        "surface": "#131313",
+                        "on-secondary-container": "#c4abff",
+                        "on-primary-container": "#006970",
+                        "secondary-fixed": "#e9ddff",
+                        "background": "#131313"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "12px",
+                        "stack-md": "24px",
+                        "container-margin": "40px",
+                        "base": "8px",
+                        "stack-lg": "48px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Outfit"],
+                        "body-lg": ["Outfit"],
+                        "body-md": ["Outfit"],
+                        "headline-lg": ["Outfit"],
+                        "display-lg": ["Outfit"],
+                        "headline-lg-mobile": ["Outfit"],
+                        "headline-md": ["Outfit"],
+                        "display-md": ["Outfit"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "display-md": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #000000; }
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid #1f1f1f;
+        }
+        .glow-border:hover {
+            border-color: #00f0ff;
+            box-shadow: 0 0 30px rgba(0, 219, 233, 0.15);
+            transition: all 0.3s ease;
+        }
+        .input-line {
+            border-bottom: 1px solid #3b494b;
+            transition: border-color 0.3s ease;
+        }
+        .input-line:focus {
+            border-bottom-color: #00f0ff;
+            outline: none;
+        }
+        .gradient-btn {
+            background: linear-gradient(135deg, #00f0ff 0%, #571bc1 100%);
+        }
+        .gradient-btn:hover {
+            background: linear-gradient(135deg, #7df4ff 0%, #5516be 100%);
+        }
+        /* Override Tailwind forms plugin for minimalist input */
+        [type='text'], [type='password'] {
+            background-color: transparent !important;
+            border-top: none !important;
+            border-left: none !important;
+            border-right: none !important;
+            border-radius: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        [type='text']:focus, [type='password']:focus {
+            box-shadow: none !important;
+        }
+    </style>
+<style data-stitch-cursor="">*{cursor:crosshair!important}[contenteditable="true"]:focus,.cursor-text:focus{cursor:text!important}</style><style data-stitch-scroll-lock="">html,body{overflow:hidden!important}</style></head>
+<body class="antialiased text-on-surface min-h-screen flex items-center justify-center relative overflow-hidden">
+<!-- Ambient Background Glow -->
+<div class="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
+<div class="w-[800px] h-[800px] rounded-full bg-primary-fixed-dim/5 blur-[120px]"></div>
+</div>
+<!-- Login Container -->
+<main class="relative z-10 w-full max-w-md px-4">
+<!-- Brand Header (Floating above card) -->
+<div class="text-center mb-stack-md">
+<h1 class="font-display-md text-display-md tracking-tighter text-primary-fixed-dim">MSU<div><br></div></h1>
+</div>
+<div class="glass-panel rounded-xl p-10 glow-border flex flex-col items-center">
+<!-- Icon -->
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-stack-md border border-outline-variant/30 shadow-[0_0_20px_rgba(0,219,233,0.1)]">
+<span class="material-symbols-outlined text-primary-container text-3xl" style="font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 200;">security</span>
+</div>
+<!-- Headers -->
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2 text-center">System Administrator Login</h2>
+<p class="font-body-md text-body-md text-on-surface-variant text-center mb-stack-lg max-w-[280px]">Enter credentials to access the Aether Command Center.</p>
+<!-- Form -->
+<form action="#" class="w-full flex flex-col gap-stack-md" method="POST">
+<div class="flex items-start gap-3 p-4 rounded-lg bg-error-container/10 border border-error/30 backdrop-blur-md mb-2">
+<span class="material-symbols-outlined text-error text-xl shrink-0">report</span>
+<p class="font-body-md text-sm text-error/90">
+<span class="font-semibold">Invalid Credentials:</span> The Admin ID or Access Key entered is incorrect. Please verify and try again.
+    </p>
+</div><div class="relative">
+<label class="font-label-sm text-label-sm mb-1 block uppercase text-error" for="admin_id">Admin ID</label>
+<input class="w-full font-body-md text-body-md text-on-surface input-line pb-2 placeholder-on-surface-variant/30 font-mono border-error/50 shadow-[0_1px_10px_rgba(255,180,171,0.1)]" id="admin_id" name="admin_id" placeholder="AETH-ID-XXXX" type="text">
+</div>
+<div class="relative">
+<label class="font-label-sm text-label-sm mb-1 block uppercase text-error" for="access_key">Access Key</label>
+<input class="w-full font-body-md text-body-md text-on-surface input-line pb-2 placeholder-on-surface-variant/30 font-mono border-error/50 shadow-[0_1px_10px_rgba(255,180,171,0.1)]" id="access_key" name="access_key" placeholder="••••••••••••••••" type="password">
+</div>
+<button class="w-full gradient-btn text-[#000000] font-label-sm text-label-sm py-4 rounded uppercase tracking-widest mt-stack-sm hover:scale-[0.98] transition-transform duration-200" type="button" onclick="window.location.href='admin-login.html'" onclick="window.location.href='admin-login.html'">
+                    Authorize Access
+                </button>
+</form>
+<!-- Secondary Action -->
+<div class="mt-stack-md">
+<a class="font-label-sm text-label-sm text-error/80 hover:text-error hover:underline transition-colors uppercase flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+                    Emergency Override Protocol
+                </a>
+</div>
+</div>
+<!-- Footer Note -->
+<div class="text-center mt-stack-md opacity-50">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">AETHER_OS v7.4.2 // SECURE CONNECTION</p>
+</div>
+</main>
+
+
+</body></html>

@@ -15,7 +15,7 @@ def _get_model():
             device=cfg.embed_device,
             trust_remote_code=True,  # required for nomic-embed-text-v1.5
         )
-        log.info("[Embedder] Model ready ✓")
+        log.info(f"[Embedder] Model ready on device: {_model.device} ✓")
     return _model
 
 

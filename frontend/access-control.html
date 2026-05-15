@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aegis Intelligence - Admin Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#000000",
+                        "inverse-primary": "#006970",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary": "#00363a",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#c4abff",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "primary-fixed": "#7df4ff",
+                        "tertiary": "#f9f5f5",
+                        "primary-container": "#00f0ff",
+                        "on-surface": "#e2e2e2",
+                        "tertiary-fixed-dim": "#c9c6c5",
+                        "on-error": "#690005",
+                        "surface-variant": "#353535",
+                        "surface-container-low": "#1b1b1b",
+                        "secondary": "#d0bcff",
+                        "on-surface-variant": "#b9cacb",
+                        "on-primary-container": "#006970",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "outline-variant": "#3b494b",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary": "#3c0091",
+                        "tertiary-container": "#dcd9d8",
+                        "surface-container-high": "#2a2a2a",
+                        "outline": "#849495",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "surface-bright": "#393939",
+                        "secondary-container": "#571bc1",
+                        "on-tertiary-container": "#605e5e",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-background": "#e2e2e2",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-container-highest": "#353535",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#e5e2e1",
+                        "surface-container": "#1f1f1f",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-dim": "#131313",
+                        "inverse-surface": "#e2e2e2",
+                        "on-tertiary": "#313030",
+                        "surface-tint": "#00dbe9",
+                        "primary": "#dbfcff",
+                        "inverse-on-surface": "#303030",
+                        "on-primary-fixed": "#002022",
+                        "surface": "#131313"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "stack-md": "24px",
+                        "stack-sm": "12px",
+                        "container-margin": "40px",
+                        "stack-lg": "48px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-md": ["Outfit"],
+                        "body-md": ["Outfit"],
+                        "display-lg": ["Outfit"],
+                        "headline-md": ["Outfit"],
+                        "body-lg": ["Outfit"],
+                        "headline-lg": ["Outfit"],
+                        "headline-lg-mobile": ["Outfit"],
+                        "label-sm": ["Outfit"]
+                    },
+                    "fontSize": {
+                        "display-md": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #000000; color: #e2e2e2; }
+        .glass-panel {
+            background-color: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(40px);
+            border: 1px solid #1f1f1f;
+        }
+        .glass-panel:hover {
+            border-color: #00f0ff;
+            box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .neon-border {
+            border: 1px solid #1f1f1f;
+            animation: breathe 4s infinite alternate;
+        }
+        @keyframes breathe {
+            0% { border-color: #1f1f1f; box-shadow: 0 0 0 transparent; }
+            100% { border-color: #00f0ff; box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); }
+        }
+        .glow-text { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+        .data-line { background: linear-gradient(90deg, #00f0ff 0%, transparent 100%); }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-background/80 backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-300 ease-in-out">
+<div class="flex items-center gap-stack-md">
+<div class="font-display-md text-headline-md tracking-tighter text-primary-container glow-text">Aegis Intelligence</div>
+</div>
+<div class="flex items-center gap-stack-sm">
+<button class="p-2 rounded-full hover:bg-surface-variant/20 transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-variant/20 transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden ml-2 border border-outline-variant">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChuR-g1PdkpxrlFW2t7B4yETleMYqizn8zPYoECMpOa53fxjujhQqdVl0wqxZq3AFDtqfFOdEB5zTsNeDcPhcBNw8nUgkWLhnSOgUSP_nBRuxybhDzIX3-ZUe0BCmkwIVMyzhItbiYNpfNFU_sRixcl-8DH1lKaFztfpDZ_KPeX5eJjtkpJ8s3qYFFPifyPaHHfCJ2n1pkiT_eIbf81oP-eVZCScKBPAPdBwwhcySjRPvWenX1wfdRbIbAURoSVziz-Y09I3QbEr3T"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar & Main Content -->
+<div class="flex flex-1 pt-16">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full w-64 pt-20 pb-8 bg-surface-container-lowest/90 backdrop-blur-2xl border-r border-outline-variant/20 shadow-2xl shadow-primary-container/5 z-40">
+<div class="px-gutter mb-stack-md">
+<div class="font-headline-md text-headline-md text-primary-fixed-dim mb-1">Terminal v4.0</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Mission Critical</div>
+</div>
+<nav class="flex-1 px-base space-y-1">
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all hover:border-primary-fixed/50 border border-transparent font-label-sm text-label-sm" href="hyperparameters.html"><span class="material-symbols-outlined text-[20px]">hub</span>Hyperparameters</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all hover:border-primary-fixed/50 border border-transparent font-label-sm text-label-sm" href="terminal.html">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+                    Query Terminal
+                </a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all hover:border-primary-fixed/50 border border-transparent font-label-sm text-label-sm" href="source-vault.html">
+<span class="material-symbols-outlined text-[20px]">database</span>
+                    Source Vault
+                </a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all hover:border-primary-fixed/50 border border-transparent font-label-sm text-label-sm" href="system-health.html">
+<span class="material-symbols-outlined text-[20px]">monitoring</span>
+                    System Health
+                </a>
+<a class="bg-primary-container/10 text-primary-container border-r-2 border-primary-container px-4 py-3 flex items-center gap-3 rounded-l-lg font-label-sm text-label-sm" href="access-control.html">
+<span class="material-symbols-outlined text-[20px] text-primary-container">admin_panel_settings</span>
+                    Access Control and Logs
+                </a>
+</nav>
+<div class="px-gutter mt-auto mb-stack-md">
+<button class="w-full bg-primary-container text-background font-label-sm text-label-sm py-3 rounded hover:bg-primary-fixed transition-colors uppercase tracking-wider font-bold">
+                    Initialize RAG
+                </button>
+</div>
+<div class="px-base space-y-1 border-t border-outline-variant/20 pt-stack-sm mt-auto">
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">help</span>
+                    Docs
+                </a>
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">contact_support</span>
+                    Support
+                </a>
+</div>
+</aside>
+<!-- Canvas -->
+<main class="flex-1 md:ml-64 p-container-margin min-h-screen">
+<div class="max-w-[1440px] mx-auto">
+<header class="mb-stack-lg">
+<h1 class="font-display-lg text-headline-lg md:text-display-md text-primary mb-2">Access Control &amp; Audit Logs</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Real-time monitoring of credential utilization and system access protocols.</p>
+</header>
+<div class="flex flex-col gap-gutter">
+<!-- Filter Bar -->
+<div class="glass-panel rounded-xl p-4 flex flex-wrap gap-4 items-center">
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Date Range:</span>
+<select class="bg-surface-container-low border border-outline-variant/30 text-on-surface font-body-md text-label-sm rounded px-3 py-1.5 focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none">
+<option>Last 24 Hours</option>
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Department:</span>
+<select class="bg-surface-container-low border border-outline-variant/30 text-on-surface font-body-md text-label-sm rounded px-3 py-1.5 focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none">
+<option>All Departments</option>
+<option>Intelligence Dept</option>
+<option>Operations</option>
+<option>Logistics</option>
+</select>
+</div>
+<div class="ml-auto">
+<button class="bg-surface-variant border border-outline-variant text-on-surface font-label-sm text-label-sm py-1.5 px-4 rounded hover:bg-primary-container hover:text-background transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">filter_list</span> Apply Filters
+                            </button>
+</div>
+</div>
+<!-- Audit Table -->
+<div class="glass-panel rounded-xl overflow-hidden flex flex-col flex-1">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead>
+<tr class="bg-surface-variant/20 border-b border-outline-variant/30">
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Timestamp</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">User Name</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Credential ID</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Department</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-body-md text-label-sm text-on-surface">
+<tr class="hover:bg-surface-variant/10 transition-colors">
+<td class="p-4 text-on-surface-variant">2024-05-24 14:02:11</td>
+<td class="p-4">Dr. Sarah Vance</td>
+<td class="p-4 font-mono text-xs text-primary-fixed-dim">SHA-256: 8a4c...f0e2</td>
+<td class="p-4">Intelligence Dept</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-container/10 border border-primary-container/30 text-primary-container text-xs font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>Success
+                                            </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/10 transition-colors">
+<td class="p-4 text-on-surface-variant">2024-05-24 13:58:42</td>
+<td class="p-4">Cmdr. James Taggart</td>
+<td class="p-4 font-mono text-xs text-primary-fixed-dim">SHA-256: 3b91...d4a1</td>
+<td class="p-4">Operations</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error/10 border border-error/30 text-error text-xs font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>Failed
+                                            </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/10 transition-colors">
+<td class="p-4 text-on-surface-variant">2024-05-24 13:45:09</td>
+<td class="p-4">Aria Chen</td>
+<td class="p-4 font-mono text-xs text-primary-fixed-dim">SHA-256: 7f2e...9c8b</td>
+<td class="p-4">Logistics</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-container/10 border border-primary-container/30 text-primary-container text-xs font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>Success
+                                            </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/10 transition-colors">
+<td class="p-4 text-on-surface-variant">2024-05-24 13:30:22</td>
+<td class="p-4">Marcus Reed</td>
+<td class="p-4 font-mono text-xs text-primary-fixed-dim">SHA-256: 1d5f...e7b4</td>
+<td class="p-4">Intelligence Dept</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-container/10 border border-primary-container/30 text-primary-container text-xs font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>Success
+                                            </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/10 transition-colors bg-error/5">
+<td class="p-4 text-on-surface-variant">2024-05-24 13:12:05</td>
+<td class="p-4">UNKNOWN</td>
+<td class="p-4 font-mono text-xs text-error">INVALID: a90c...22f1</td>
+<td class="p-4">External Protocol</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container/20 border border-error/50 text-error text-xs font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>BLOCKED
+                                            </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-outline-variant/30 flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm">
+<span>Showing 1-5 of 14,208 records</span>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 rounded border border-outline-variant/30 hover:bg-surface-variant/20 transition-colors disabled:opacity-50" disabled="">Previous</button>
+<button class="px-3 py-1.5 rounded border border-outline-variant/30 hover:bg-surface-variant/20 transition-colors text-primary-container border-primary-container/30">Next</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-6 px-gutter flex justify-between items-center bg-background border-t border-outline-variant/20 z-50 md:ml-64 md:w-[calc(100%-16rem)]">
+<div class="font-label-sm text-label-sm text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity">
+            © 2024 Aegis Intelligence • High-Fidelity Data Synthesis
+        </div>
+<div class="flex gap-stack-md">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed-dim transition-colors uppercase tracking-wider" href="#">Security Protocol</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed-dim transition-colors uppercase tracking-wider" href="#">API Status</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed-dim transition-colors uppercase tracking-wider" href="#">Privacy Node</a>
+</div>
+</footer>
+</body></html>

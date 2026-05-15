@@ -40,6 +40,9 @@ def query_department(
     model: str = None,
     top_k: int = None,
     stream: bool = False,
+    temperature: float = 0.7,
+    top_p: float = 0.9,
+    top_n: int = 4
 ) -> dict:
     """
     Full RAG query pipeline, scoped to a single department.
@@ -64,7 +67,7 @@ def query_department(
     q_vec = embed_query(question)
 
     # 2. Retrieve (ABAC-filtered + BM25 re-ranked)
-    retrieved = hybrid_search(store, q_vec, question, department, top_k)
+    retrieved = hybrid_search(store, q_vec, question, department, top_k or top_n)
 
     if not retrieved:
         raise ValueError(
@@ -75,7 +78,13 @@ def query_department(
     prompt = build_prompt(retrieved, question, department)
 
     # 4. LLM generation
-    answer = ask_llm(prompt, model=model, stream=stream)
+    answer = ask_llm(
+        prompt, 
+        model=model, 
+        stream=stream, 
+        temperature=temperature, 
+        top_p=top_p
+    )
 
     latency_ms = int((time.perf_counter() - t0) * 1000)
     log.info(

@@ -1,0 +1,221 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Aegis Intelligence - Sector Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "background": "#131313",
+                        "inverse-primary": "#006970",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary": "#00363a",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#c4abff",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "primary-fixed": "#7df4ff",
+                        "tertiary": "#f9f5f5",
+                        "primary-container": "#00f0ff",
+                        "on-surface": "#e2e2e2",
+                        "tertiary-fixed-dim": "#c9c6c5",
+                        "on-error": "#690005",
+                        "surface-variant": "#353535",
+                        "surface-container-low": "#1b1b1b",
+                        "secondary": "#d0bcff",
+                        "on-surface-variant": "#b9cacb",
+                        "on-primary-container": "#006970",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "outline-variant": "#3b494b",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary": "#3c0091",
+                        "tertiary-container": "#dcd9d8",
+                        "surface-container-high": "#2a2a2a",
+                        "outline": "#849495",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "surface-bright": "#393939",
+                        "secondary-container": "#571bc1",
+                        "on-tertiary-container": "#605e5e",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-background": "#e2e2e2",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-container-highest": "#353535",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#e5e2e1",
+                        "surface-container": "#1f1f1f",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-dim": "#131313",
+                        "inverse-surface": "#e2e2e2",
+                        "on-tertiary": "#313030",
+                        "surface-tint": "#00dbe9",
+                        "primary": "#dbfcff",
+                        "inverse-on-surface": "#303030",
+                        "on-primary-fixed": "#002022",
+                        "surface": "#131313"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "24px",
+                        "stack-md": "24px",
+                        "stack-sm": "12px",
+                        "container-margin": "40px",
+                        "stack-lg": "48px",
+                        "base": "8px"
+                    },
+                    fontFamily: {
+                        "display-md": ["Outfit"],
+                        "body-md": ["Outfit"],
+                        "display-lg": ["Outfit"],
+                        "headline-md": ["Outfit"],
+                        "body-lg": ["Outfit"],
+                        "headline-lg": ["Outfit"],
+                        "headline-lg-mobile": ["Outfit"],
+                        "label-sm": ["Outfit"]
+                    },
+                    fontSize: {
+                        "display-md": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style data-stitch-cursor="">*{cursor:crosshair!important}[contenteditable="true"]:focus,.cursor-text:focus{cursor:text!important}</style><style data-stitch-scroll-lock="">html,body{overflow:hidden!important}</style></head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen overflow-x-hidden selection:bg-primary-container/30 selection:text-primary">
+<div class="fixed inset-0 z-0 pointer-events-none opacity-20 bg-[url('https://images.unsplash.com/photo-1635048424329-a9bfb146d7aa?q=80&amp;w=3000&amp;auto=format&amp;fit=crop')] bg-cover bg-center" data-alt="A highly abstract, futuristic background texture featuring subtle, geometric light grids dissolving into deep OLED blackness. The lighting is low-key, emitting a soft, luminescent electric blue glow that suggests advanced circuitry or neural networks. The aesthetic is strictly minimalist and technological, creating a sense of infinite, deep computational space without any distracting elements."></div>
+<main class="pt-24 px-10 pb-20 min-h-screen relative z-10 flex flex-col max-w-[1600px] mx-auto pt-12">
+<div class="mb-12 border-l-2 border-primary-container pl-6 relative">
+<div class="absolute -left-[5px] top-2 w-2 h-2 rounded-full bg-primary-container shadow-[0_0_10px_rgba(0,240,255,0.8)]"></div>
+<h1 class="font-display-lg text-display-md md:text-display-lg text-on-surface tracking-tight mb-2">Operational Nodes</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Select a departmental sector to initialize secure access and establish connection with local data silos.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 flex-1 content-start">
+<a class="group relative bg-[#0a0a0a] border border-[#1f1f1f] rounded-xl p-8 overflow-hidden transition-all duration-500 hover:border-primary-container hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(0,240,255,0.15)] flex flex-col h-full min-h-[280px]" href="secure-login.html">
+<div class="absolute inset-0 bg-gradient-to-br from-surface-variant/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="absolute inset-0 bg-primary-container/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="w-16 h-16 rounded-lg border border-outline-variant/30 bg-surface-container/50 flex items-center justify-center mb-8 relative z-10 group-hover:border-primary-container/40 group-hover:bg-surface-container transition-all duration-500">
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/20 blur-xl transition-all duration-500 rounded-lg"></div>
+<span class="material-symbols-outlined text-[32px] text-on-surface-variant group-hover:text-primary-container transition-colors duration-500 relative z-20" style="font-variation-settings: &quot;wght&quot; 200;">account_balance</span>
+</div>
+<div class="relative z-10 mt-auto">
+<h3 class="font-headline-lg text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors duration-300">Finance</h3>
+<div class="flex items-center justify-between">
+<p class="font-label-sm text-[11px] tracking-widest uppercase text-on-surface-variant/60 group-hover:text-primary-fixed-dim/80 transition-colors duration-300"><br></p>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary-container transition-all duration-300 translate-x-0 opacity-0 group-hover:opacity-100 group-hover:translate-x-1" style="font-variation-settings: &quot;wght&quot; 300;">arrow_forward</span>
+</div>
+</div>
+<div class="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-transparent group-hover:border-primary-container/30 m-6 transition-all duration-700 pointer-events-none"></div>
+</a>
+<a class="group relative bg-[#0a0a0a] border border-[#1f1f1f] rounded-xl p-8 overflow-hidden transition-all duration-500 hover:border-primary-container hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(0,240,255,0.15)] flex flex-col h-full min-h-[280px]" href="secure-login.html">
+<div class="absolute inset-0 bg-gradient-to-br from-surface-variant/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="absolute inset-0 bg-primary-container/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="w-16 h-16 rounded-lg border border-outline-variant/30 bg-surface-container/50 flex items-center justify-center mb-8 relative z-10 group-hover:border-primary-container/40 group-hover:bg-surface-container transition-all duration-500">
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/20 blur-xl transition-all duration-500 rounded-lg"></div>
+<span class="material-symbols-outlined text-[32px] text-on-surface-variant group-hover:text-primary-container transition-colors duration-500 relative z-20" style="font-variation-settings: &quot;wght&quot; 200;">badge</span>
+</div>
+<div class="relative z-10 mt-auto">
+<h3 class="font-headline-lg text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors duration-300">Human Resources</h3>
+<div class="flex items-center justify-between">
+<p class="font-label-sm text-[11px] tracking-widest uppercase text-on-surface-variant/60 group-hover:text-primary-fixed-dim/80 transition-colors duration-300"><br></p>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary-container transition-all duration-300 translate-x-0 opacity-0 group-hover:opacity-100 group-hover:translate-x-1" style="font-variation-settings: &quot;wght&quot; 300;">arrow_forward</span>
+</div>
+</div>
+<div class="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-transparent group-hover:border-primary-container/30 m-6 transition-all duration-700 pointer-events-none"></div>
+</a>
+<a class="group relative bg-[#0a0a0a] border border-[#1f1f1f] rounded-xl p-8 overflow-hidden transition-all duration-500 hover:border-primary-container hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(0,240,255,0.15)] flex flex-col h-full min-h-[280px]" href="secure-login.html">
+<div class="absolute inset-0 bg-gradient-to-br from-surface-variant/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="absolute inset-0 bg-primary-container/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="w-16 h-16 rounded-lg border border-outline-variant/30 bg-surface-container/50 flex items-center justify-center mb-8 relative z-10 group-hover:border-primary-container/40 group-hover:bg-surface-container transition-all duration-500">
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/20 blur-xl transition-all duration-500 rounded-lg"></div>
+<span class="material-symbols-outlined text-[32px] text-on-surface-variant group-hover:text-primary-container transition-colors duration-500 relative z-20" style="font-variation-settings: &quot;wght&quot; 200;">engineering</span>
+</div>
+<div class="relative z-10 mt-auto">
+<h3 class="font-headline-lg text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors duration-300">Engineering</h3>
+<div class="flex items-center justify-between">
+<p class="font-label-sm text-[11px] tracking-widest uppercase text-on-surface-variant/60 group-hover:text-primary-fixed-dim/80 transition-colors duration-300"><br></p>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary-container transition-all duration-300 translate-x-0 opacity-0 group-hover:opacity-100 group-hover:translate-x-1" style="font-variation-settings: &quot;wght&quot; 300;">arrow_forward</span>
+</div>
+</div>
+<div class="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-transparent group-hover:border-primary-container/30 m-6 transition-all duration-700 pointer-events-none"></div>
+</a>
+<a class="group relative bg-[#0a0a0a] border border-[#1f1f1f] rounded-xl p-8 overflow-hidden transition-all duration-500 hover:border-primary-container hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(0,240,255,0.15)] flex flex-col h-full min-h-[280px]" href="secure-login.html">
+<div class="absolute inset-0 bg-gradient-to-br from-surface-variant/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="absolute inset-0 bg-primary-container/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="w-16 h-16 rounded-lg border border-outline-variant/30 bg-surface-container/50 flex items-center justify-center mb-8 relative z-10 group-hover:border-primary-container/40 group-hover:bg-surface-container transition-all duration-500">
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/20 blur-xl transition-all duration-500 rounded-lg"></div>
+<span class="material-symbols-outlined text-[32px] text-on-surface-variant group-hover:text-primary-container transition-colors duration-500 relative z-20" style="font-variation-settings: &quot;wght&quot; 200;">gavel</span>
+</div>
+<div class="relative z-10 mt-auto">
+<h3 class="font-headline-lg text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors duration-300">Legal</h3>
+<div class="flex items-center justify-between">
+<p class="font-label-sm text-[11px] tracking-widest uppercase text-on-surface-variant/60 group-hover:text-primary-fixed-dim/80 transition-colors duration-300"><br></p>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary-container transition-all duration-300 translate-x-0 opacity-0 group-hover:opacity-100 group-hover:translate-x-1" style="font-variation-settings: &quot;wght&quot; 300;">arrow_forward</span>
+</div>
+</div>
+<div class="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-transparent group-hover:border-primary-container/30 m-6 transition-all duration-700 pointer-events-none"></div>
+</a>
+<a class="group relative bg-[#0a0a0a] border border-[#1f1f1f] rounded-xl p-8 overflow-hidden transition-all duration-500 hover:border-primary-container hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(0,240,255,0.15)] flex flex-col h-full min-h-[280px]" href="secure-login.html">
+<div class="absolute inset-0 bg-gradient-to-br from-surface-variant/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="absolute inset-0 bg-primary-container/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="w-16 h-16 rounded-lg border border-outline-variant/30 bg-surface-container/50 flex items-center justify-center mb-8 relative z-10 group-hover:border-primary-container/40 group-hover:bg-surface-container transition-all duration-500">
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/20 blur-xl transition-all duration-500 rounded-lg"></div>
+<span class="material-symbols-outlined text-[32px] text-on-surface-variant group-hover:text-primary-container transition-colors duration-500 relative z-20" style="font-variation-settings: &quot;wght&quot; 200;">settings_suggest</span>
+</div>
+<div class="relative z-10 mt-auto">
+<h3 class="font-headline-lg text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors duration-300">Operations</h3>
+<div class="flex items-center justify-between">
+<p class="font-label-sm text-[11px] tracking-widest uppercase text-on-surface-variant/60 group-hover:text-primary-fixed-dim/80 transition-colors duration-300"><br></p>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary-container transition-all duration-300 translate-x-0 opacity-0 group-hover:opacity-100 group-hover:translate-x-1" style="font-variation-settings: &quot;wght&quot; 300;">arrow_forward</span>
+</div>
+</div>
+<div class="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-transparent group-hover:border-primary-container/30 m-6 transition-all duration-700 pointer-events-none"></div>
+</a>
+<a class="group relative bg-[#0a0a0a] border border-[#1f1f1f] rounded-xl p-8 overflow-hidden transition-all duration-500 hover:border-primary-container hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(0,240,255,0.15)] flex flex-col h-full min-h-[280px]" href="secure-login.html">
+<div class="absolute inset-0 bg-gradient-to-br from-surface-variant/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="absolute inset-0 bg-primary-container/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="w-16 h-16 rounded-lg border border-outline-variant/30 bg-surface-container/50 flex items-center justify-center mb-8 relative z-10 group-hover:border-primary-container/40 group-hover:bg-surface-container transition-all duration-500">
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/20 blur-xl transition-all duration-500 rounded-lg"></div>
+<span class="material-symbols-outlined text-[32px] text-on-surface-variant group-hover:text-primary-container transition-colors duration-500 relative z-20" style="font-variation-settings: &quot;wght&quot; 200;">trending_up</span>
+</div>
+<div class="relative z-10 mt-auto">
+<h3 class="font-headline-lg text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors duration-300">Sales</h3>
+<div class="flex items-center justify-between">
+<p class="font-label-sm text-[11px] tracking-widest uppercase text-on-surface-variant/60 group-hover:text-primary-fixed-dim/80 transition-colors duration-300"><br></p>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary-container transition-all duration-300 translate-x-0 opacity-0 group-hover:opacity-100 group-hover:translate-x-1" style="font-variation-settings: &quot;wght&quot; 300;">arrow_forward</span>
+</div>
+</div>
+<div class="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-transparent group-hover:border-primary-container/30 m-6 transition-all duration-700 pointer-events-none"></div>
+</a>
+</div>
+</main>
+
+<script>
+// Save selected department to localStorage before navigating to login
+document.querySelectorAll('a[href="secure-login.html"]').forEach(function(card) {
+    card.addEventListener('click', function() {
+        var heading = card.querySelector('h3');
+        if (heading) {
+            localStorage.setItem('rag_department', heading.textContent.trim());
+        }
+    });
+});
+</script>
+</body></html>

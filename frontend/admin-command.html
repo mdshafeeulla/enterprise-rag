@@ -1,0 +1,331 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Aegis Intelligence - Admin Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#131313",
+                        "inverse-primary": "#006970",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary": "#00363a",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#c4abff",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "primary-fixed": "#7df4ff",
+                        "tertiary": "#f9f5f5",
+                        "primary-container": "#00f0ff",
+                        "on-surface": "#e2e2e2",
+                        "tertiary-fixed-dim": "#c9c6c5",
+                        "on-error": "#690005",
+                        "surface-variant": "#353535",
+                        "surface-container-low": "#1b1b1b",
+                        "secondary": "#d0bcff",
+                        "on-surface-variant": "#b9cacb",
+                        "on-primary-container": "#006970",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "outline-variant": "#3b494b",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary": "#3c0091",
+                        "tertiary-container": "#dcd9d8",
+                        "surface-container-high": "#2a2a2a",
+                        "outline": "#849495",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "surface-bright": "#393939",
+                        "secondary-container": "#571bc1",
+                        "on-tertiary-container": "#605e5e",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-background": "#e2e2e2",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-container-highest": "#353535",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#e5e2e1",
+                        "surface-container": "#1f1f1f",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-dim": "#131313",
+                        "inverse-surface": "#e2e2e2",
+                        "on-tertiary": "#313030",
+                        "surface-tint": "#00dbe9",
+                        "primary": "#dbfcff",
+                        "inverse-on-surface": "#303030",
+                        "on-primary-fixed": "#002022",
+                        "surface": "#131313"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "stack-md": "24px",
+                        "stack-sm": "12px",
+                        "container-margin": "40px",
+                        "stack-lg": "48px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-md": ["Outfit"],
+                        "body-md": ["Outfit"],
+                        "display-lg": ["Outfit"],
+                        "headline-md": ["Outfit"],
+                        "body-lg": ["Outfit"],
+                        "headline-lg": ["Outfit"],
+                        "headline-lg-mobile": ["Outfit"],
+                        "label-sm": ["Outfit"]
+                    },
+                    "fontSize": {
+                        "display-md": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #131313; color: #e2e2e2; }
+        .glass-panel {
+            background-color: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(40px);
+            border: 1px solid #1f1f1f;
+        }
+        .glass-panel:hover {
+            border-color: #00f0ff;
+            box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .neon-border {
+            border: 1px solid #1f1f1f;
+            animation: breathe 4s infinite alternate;
+        }
+        @keyframes breathe {
+            0% { border-color: #1f1f1f; box-shadow: 0 0 0 transparent; }
+            100% { border-color: #00f0ff; box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); }
+        }
+        .glow-text { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+        .data-line { background: linear-gradient(90deg, #00f0ff 0%, transparent 100%); }
+    </style>
+<style data-stitch-cursor="">*{cursor:crosshair!important}[contenteditable="true"]:focus,.cursor-text:focus{cursor:text!important}</style><style data-stitch-scroll-lock="">html,body{overflow:hidden!important}</style></head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-background/80 backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-300 ease-in-out">
+<div class="flex items-center gap-stack-md">
+<div class="font-display-md text-headline-md tracking-tighter text-primary-container glow-text">MSU</div>
+</div>
+<div class="flex items-center gap-stack-sm">
+<button class="p-2 rounded-full hover:bg-surface-variant/20 transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-variant/20 transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden ml-2 border border-outline-variant">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChuR-g1PdkpxrlFW2t7B4yETleMYqizn8zPYoECMpOa53fxjujhQqdVl0wqxZq3AFDtqfFOdEB5zTsNeDcPhcBNw8nUgkWLhnSOgUSP_nBRuxybhDzIX3-ZUe0BCmkwIVMyzhItbiYNpfNFU_sRixcl-8DH1lKaFztfpDZ_KPeX5eJjtkpJ8s3qYFFPifyPaHHfCJ2n1pkiT_eIbf81oP-eVZCScKBPAPdBwwhcySjRPvWenX1wfdRbIbAURoSVziz-Y09I3QbEr3T">
+</div>
+</div>
+</header>
+<!-- SideNavBar & Main Content -->
+<div class="flex flex-1 pt-16">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full w-64 pt-20 pb-8 bg-surface-container-lowest/90 backdrop-blur-2xl border-r border-outline-variant/20 shadow-2xl shadow-primary-container/5 z-40">
+<div class="px-gutter mb-stack-md">
+<div class="font-headline-md text-headline-md text-primary-fixed-dim mb-1">Terminal v4.0</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Mission Critical</div>
+</div>
+<nav class="flex-1 px-base space-y-1">
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all hover:border-primary-fixed/50 border border-transparent font-label-sm text-label-sm" href="hyperparameters.html"><span class="material-symbols-outlined text-[20px]">hub</span>Hyperparameters</a>
+<a class="bg-primary-container/10 text-primary-container border-r-2 border-primary-container px-4 py-3 flex items-center gap-3 rounded-l-lg font-label-sm text-label-sm" href="terminal.html">
+<span class="material-symbols-outlined text-[20px] text-primary-container">terminal</span>
+                    Query Terminal
+                </a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all hover:border-primary-fixed/50 border border-transparent font-label-sm text-label-sm" href="source-vault.html">
+<span class="material-symbols-outlined text-[20px]">database</span>
+                    Source Vault
+                </a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all hover:border-primary-fixed/50 border border-transparent font-label-sm text-label-sm" href="system-health.html">
+<span class="material-symbols-outlined text-[20px]">monitoring</span>
+                    System Health
+                </a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all hover:border-primary-fixed/50 border border-transparent font-label-sm text-label-sm" href="access-control.html"><span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>Access Control and Logs</a>
+</nav>
+<div class="px-gutter mt-auto mb-stack-md">
+<button class="w-full bg-primary-container text-background font-label-sm text-label-sm py-3 rounded hover:bg-primary-fixed transition-colors uppercase tracking-wider font-bold">
+                    Initialize RAG
+                </button>
+</div>
+<div class="px-base space-y-1 border-t border-outline-variant/20 pt-stack-sm mt-auto">
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">help</span>
+                    Docs
+                </a>
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-variant/10 rounded-lg transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">contact_support</span>
+                    Support
+                </a>
+</div>
+</aside>
+<!-- Canvas -->
+<main class="flex-1 md:ml-64 p-container-margin min-h-screen">
+<div class="max-w-[1440px] mx-auto">
+<header class="mb-stack-lg">
+<h1 class="font-display-lg text-headline-lg md:text-display-md text-primary mb-2">Admin Command Center</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">High-density operational overview and data ingestion portal.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left: Live Telemetry -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<div class="glass-panel rounded-xl p-stack-md flex-1">
+<div class="flex justify-between items-center mb-stack-md border-b border-outline-variant/30 pb-3">
+<h2 class="font-headline-md text-body-lg text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">sensors</span>
+                                    Live Telemetry
+                                </h2>
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-primary-fixed">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+                                    ACTIVE
+                                </span>
+</div>
+<div class="space-y-stack-md">
+<div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant mb-1">
+<span class="">CONCURRENT USERS</span>
+<span class="text-primary">1,402</span>
+</div>
+<div class="h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[75%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant mb-1">
+<span class="">TOKEN THROUGHPUT (1m)</span>
+<span class="text-secondary-fixed-dim">45.2k/s</span>
+</div>
+<div class="h-24 mt-2 relative border-b border-l border-outline-variant/30">
+<!-- Simulated Chart Lines -->
+<div class="absolute bottom-0 left-0 w-full h-[60%] border-t-2 border-secondary-fixed-dim bg-secondary-fixed-dim/10 rounded-tr-lg" style="clip-path: polygon(0 100%, 0 40%, 20% 60%, 40% 20%, 60% 50%, 80% 10%, 100% 30%, 100% 100%);"></div>
+<div class="absolute bottom-0 left-0 w-full h-[40%] border-t-2 border-primary-container bg-primary-container/10 rounded-tr-lg" style="clip-path: polygon(0 100%, 0 70%, 20% 80%, 40% 40%, 60% 70%, 80% 30%, 100% 50%, 100% 100%);"></div>
+</div>
+</div>
+<div class="space-y-2 mt-4">
+<div class="flex items-center justify-between font-body-md text-label-sm p-2 bg-surface-container-low rounded border border-outline-variant/20">
+<span class="text-on-surface-variant">Query Latency (p99)</span>
+<span class="text-error">1.2s</span>
+</div>
+<div class="flex items-center justify-between font-body-md text-label-sm p-2 bg-surface-container-low rounded border border-outline-variant/20">
+<span class="text-on-surface-variant">RAG Hit Rate</span>
+<span class="text-primary-container">94.8%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Middle: Storage Vault -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<div class="glass-panel rounded-xl p-stack-md flex-1">
+<div class="flex justify-between items-center mb-stack-md border-b border-outline-variant/30 pb-3">
+<h2 class="font-headline-md text-body-lg text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-[20px]">dns</span>
+                                    Storage Vault
+                                </h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">8.4 / 10 TB</span>
+</div>
+<div class="space-y-stack-md">
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">Intelligence Dept</span>
+<span class="text-on-surface-variant">3.2 TB</span>
+</div>
+<div class="h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[80%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">Operations</span>
+<span class="text-on-surface-variant">2.1 TB</span>
+</div>
+<div class="h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed w-[65%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">Logistics</span>
+<span class="text-on-surface-variant">1.8 TB</span>
+</div>
+<div class="h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed w-[45%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">Unallocated</span>
+<span class="text-on-surface-variant">1.3 TB</span>
+</div>
+<div class="h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-outline-variant w-[20%]"></div>
+</div>
+</div>
+</div>
+<div class="mt-stack-md pt-stack-md border-t border-outline-variant/30">
+<button class="w-full bg-transparent border border-outline-variant text-on-surface font-label-sm text-label-sm py-2 rounded hover:border-primary-container hover:text-primary-container transition-all flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                                    PROVISION STORAGE
+                                </button>
+</div>
+</div>
+</div>
+<!-- Right: Ingestion Portal -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<div class="glass-panel rounded-xl p-stack-md flex-1 flex flex-col">
+<div class="flex justify-between items-center mb-stack-md border-b border-outline-variant/30 pb-3">
+<h2 class="font-headline-md text-body-lg text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">cloud_upload</span>
+                                    Ingestion Portal
+                                </h2>
+</div>
+<div class="flex-1 flex flex-col justify-center items-center neon-border rounded-lg p-stack-md bg-surface-container-low/50 relative overflow-hidden group cursor-pointer min-h-[250px]">
+<div class="absolute inset-0 bg-gradient-to-b from-primary-container/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<span class="material-symbols-outlined text-[48px] text-outline-variant group-hover:text-primary-container transition-colors duration-300 mb-4 z-10">upload_file</span>
+<h3 class="font-headline-md text-body-lg text-on-surface text-center z-10 mb-2">Drop Raw Data Streams</h3>
+<p class="font-body-md text-label-sm text-on-surface-variant text-center max-w-[80%] z-10 mb-6">Support for CSV, JSON, TXT, and PDF vectors up to 500GB per node.</p>
+<button class="bg-surface-variant border border-outline-variant text-on-surface font-label-sm text-label-sm py-2 px-6 rounded-full hover:bg-primary-container hover:text-background transition-all z-10">
+                                    BROWSE SECURE NODES
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-6 px-gutter flex justify-between items-center bg-background border-t border-outline-variant/20 z-50 md:ml-64 md:w-[calc(100%-16rem)]">
+<div class="font-label-sm text-label-sm text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity">
+            © 2024 Aegis Intelligence • High-Fidelity Data Synthesis
+        </div>
+<div class="flex gap-stack-md">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed-dim transition-colors uppercase tracking-wider" href="#">Security Protocol</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed-dim transition-colors uppercase tracking-wider" href="#">API Status</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed-dim transition-colors uppercase tracking-wider" href="#">Privacy Node</a>
+</div>
+</footer>
+
+
+</body></html>

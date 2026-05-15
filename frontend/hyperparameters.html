@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aegis Intelligence - Hyperparameters</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#000000",
+                        "inverse-primary": "#006970",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary": "#00363a",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#c4abff",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "primary-fixed": "#7df4ff",
+                        "tertiary": "#f9f5f5",
+                        "primary-container": "#00f0ff",
+                        "on-surface": "#e2e2e2",
+                        "tertiary-fixed-dim": "#c9c6c5",
+                        "on-error": "#690005",
+                        "surface-variant": "#1a1a1a",
+                        "surface-container-low": "#0a0a0a",
+                        "secondary": "#d0bcff",
+                        "on-surface-variant": "#b9cacb",
+                        "on-primary-container": "#000000",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "outline-variant": "#3b494b",
+                        "surface-container-lowest": "#050505",
+                        "on-secondary": "#3c0091",
+                        "tertiary-container": "#dcd9d8",
+                        "surface-container-high": "#141414",
+                        "outline": "#849495",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "surface-bright": "#242424",
+                        "secondary-container": "#571bc1",
+                        "on-tertiary-container": "#605e5e",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-background": "#e2e2e2",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-container-highest": "#1f1f1f",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#e5e2e1",
+                        "surface-container": "#0f0f0f",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-dim": "#0a0a0a",
+                        "inverse-surface": "#e2e2e2",
+                        "on-tertiary": "#313030",
+                        "surface-tint": "#00dbe9",
+                        "primary": "#dbfcff",
+                        "inverse-on-surface": "#303030",
+                        "on-primary-fixed": "#002022",
+                        "surface": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "stack-md": "24px",
+                        "stack-sm": "12px",
+                        "container-margin": "40px",
+                        "stack-lg": "48px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-md": ["Outfit"],
+                        "body-md": ["Outfit"],
+                        "display-lg": ["Outfit"],
+                        "headline-md": ["Outfit"],
+                        "body-lg": ["Outfit"],
+                        "headline-lg": ["Outfit"],
+                        "headline-lg-mobile": ["Outfit"],
+                        "label-sm": ["Outfit"]
+                    },
+                    "fontSize": {
+                        "display-md": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #000000; color: #e2e2e2; }
+        .glass-panel {
+            background-color: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 73, 75, 0.3);
+        }
+        .glow-text { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+        
+        /* Custom Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 12px;
+            border-radius: 4px;
+            background: #00f0ff;
+            cursor: pointer;
+            margin-top: -10px;
+            box-shadow: 0 0 15px #00f0ff;
+            border: 1px solid #dbfcff;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: rgba(0, 240, 255, 0.2);
+            border-radius: 2px;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        
+        /* Simulated fill for sliders (done via CSS variables inline for demo) */
+        .slider-fill-temp { background: linear-gradient(90deg, #00f0ff 24%, rgba(0, 240, 255, 0.2) 24%); }
+        .slider-fill-p { background: linear-gradient(90deg, #00f0ff 85%, rgba(0, 240, 255, 0.2) 85%); }
+        .slider-fill-n { background: linear-gradient(90deg, #00f0ff 20%, rgba(0, 240, 255, 0.2) 20%); }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-background/80 backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-300 ease-in-out">
+<div class="flex items-center gap-stack-md">
+<div class="font-display-md text-headline-md tracking-tighter text-primary-container glow-text">Aegis Intelligence</div>
+</div>
+<div class="flex items-center gap-stack-sm">
+<button class="p-2 rounded-full hover:bg-surface-variant/40 transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-variant/40 transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden ml-2 border border-outline-variant">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChuR-g1PdkpxrlFW2t7B4yETleMYqizn8zPYoECMpOa53fxjujhQqdVl0wqxZq3AFDtqfFOdEB5zTsNeDcPhcBNw8nUgkWLhnSOgUSP_nBRuxybhDzIX3-ZUe0BCmkwIVMyzhItbiYNpfNFU_sRixcl-8DH1lKaFztfpDZ_KPeX5eJjtkpJ8s3qYFFPifyPaHHfCJ2n1pkiT_eIbf81oP-eVZCScKBPAPdBwwhcySjRPvWenX1wfdRbIbAURoSVziz-Y09I3QbEr3T"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar & Main Content -->
+<div class="flex flex-1 pt-16">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full w-64 pt-20 pb-8 bg-surface-container-lowest/90 backdrop-blur-2xl border-r border-outline-variant/20 shadow-2xl shadow-primary-container/5 z-40">
+<div class="px-gutter mb-stack-md">
+<div class="font-headline-md text-headline-md text-primary-fixed-dim mb-1">Terminal v4.0</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Mission Critical</div>
+</div>
+<nav class="flex-1 px-base space-y-1">
+<a class="bg-primary-container/10 text-primary-container border-r-2 border-primary-container px-4 py-3 flex items-center gap-3 rounded-l-lg font-label-sm text-label-sm" href="hyperparameters.html">
+<span class="material-symbols-outlined text-[20px] text-primary-container">hub</span>
+                    Hyperparameters
+                </a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/40 rounded-lg transition-all hover:border-primary-fixed/50 border border-transparent font-label-sm text-label-sm" href="terminal.html">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+                    Query Terminal
+                </a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/40 rounded-lg transition-all hover:border-primary-fixed/50 border border-transparent font-label-sm text-label-sm" href="source-vault.html">
+<span class="material-symbols-outlined text-[20px]">database</span>
+                    Source Vault
+                </a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/40 rounded-lg transition-all hover:border-primary-fixed/50 border border-transparent font-label-sm text-label-sm" href="system-health.html">
+<span class="material-symbols-outlined text-[20px]">monitoring</span>
+                    System Health
+                </a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/40 rounded-lg transition-all hover:border-primary-fixed/50 border border-transparent font-label-sm text-label-sm" href="access-control.html">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+                    Access Control and Logs
+                </a>
+</nav>
+<div class="px-gutter mt-auto mb-stack-md">
+<button class="w-full bg-primary-container text-background font-label-sm text-label-sm py-3 rounded hover:bg-primary-fixed transition-colors uppercase tracking-wider font-bold shadow-[0_0_15px_rgba(0,240,255,0.3)]">
+                    Initialize RAG
+                </button>
+</div>
+<div class="px-base space-y-1 border-t border-outline-variant/20 pt-stack-sm mt-auto">
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-variant/40 rounded-lg transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">help</span>
+                    Docs
+                </a>
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-variant/40 rounded-lg transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">contact_support</span>
+                    Support
+                </a>
+</div>
+</aside>
+<!-- Canvas -->
+<main class="flex-1 md:ml-64 p-container-margin min-h-screen">
+<div class="max-w-[1440px] mx-auto">
+<header class="mb-stack-lg">
+<h1 class="font-display-lg text-headline-lg md:text-display-md text-primary mb-2 glow-text">Hyperparameters</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Fine-tune model behavior and generation constraints.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Temperature Slider -->
+<div class="glass-panel rounded-xl p-stack-md flex flex-col gap-4 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="flex justify-between items-center relative z-10">
+<h2 class="font-headline-md text-body-lg text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">thermostat</span>
+                                Temperature
+                            </h2>
+<div class="bg-surface-variant/80 border border-primary-container/30 px-3 py-1 rounded font-body-md text-primary-container glow-text" id="temp-display">
+                                1.2
+                            </div>
+</div>
+<p class="font-body-md text-label-sm text-on-surface-variant relative z-10">Controls randomness. Lower values are more focused, higher values are more creative.</p>
+<div class="relative pt-4 pb-2 z-10">
+<input id="temp-slider" class="slider-fill-temp" max="5.0" min="0.0" step="0.1" type="range" value="1.2"/>
+<div class="flex justify-between font-label-sm text-[10px] text-on-surface-variant mt-2">
+<span>0.0</span>
+<span>5.0</span>
+</div>
+</div>
+</div>
+<!-- P-Value Slider -->
+<div class="glass-panel rounded-xl p-stack-md flex flex-col gap-4 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="flex justify-between items-center relative z-10">
+<h2 class="font-headline-md text-body-lg text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">scatter_plot</span>
+                                Top-P
+                            </h2>
+<div class="bg-surface-variant/80 border border-primary-container/30 px-3 py-1 rounded font-body-md text-primary-container glow-text" id="p-display">
+                                85.0
+                            </div>
+</div>
+<p class="font-body-md text-label-sm text-on-surface-variant relative z-10">Nucleus sampling. Considers only the tokens with top-p probability mass.</p>
+<div class="relative pt-4 pb-2 z-10">
+<input id="p-slider" class="slider-fill-p" max="100.0" min="0.0" step="1.0" type="range" value="85.0"/>
+<div class="flex justify-between font-label-sm text-[10px] text-on-surface-variant mt-2">
+<span>0.0</span>
+<span>100.0</span>
+</div>
+</div>
+</div>
+<!-- N-Value Slider -->
+<div class="glass-panel rounded-xl p-stack-md flex flex-col gap-4 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="flex justify-between items-center relative z-10">
+<h2 class="font-headline-md text-body-lg text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">filter_1</span>
+                                Top-N
+                            </h2>
+<div class="bg-surface-variant/80 border border-primary-container/30 px-3 py-1 rounded font-body-md text-primary-container glow-text" id="n-display">
+                                4
+                            </div>
+</div>
+<p class="font-body-md text-label-sm text-on-surface-variant relative z-10">Limits the generated vocabulary to the top-n most probable tokens.</p>
+<div class="relative pt-4 pb-2 z-10">
+<input id="n-slider" class="slider-fill-n" max="20" min="0" step="1" type="range" value="4"/>
+<div class="flex justify-between font-label-sm text-[10px] text-on-surface-variant mt-2">
+<span>0</span>
+<span>20</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-6 px-gutter flex justify-between items-center bg-background border-t border-outline-variant/20 z-50 md:ml-64 md:w-[calc(100%-16rem)]">
+<div class="font-label-sm text-label-sm text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity">
+            © 2024 Aegis Intelligence • High-Fidelity Data Synthesis
+        </div>
+<div class="flex gap-stack-md">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed-dim transition-colors uppercase tracking-wider" href="#">Security Protocol</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed-dim transition-colors uppercase tracking-wider" href="#">API Status</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed-dim transition-colors uppercase tracking-wider" href="#">Privacy Node</a>
+</div>
+</footer>
+
+<script>
+function updateSlider(sliderId, displayId, storageKey) {
+    const slider = document.getElementById(sliderId);
+    const display = document.getElementById(displayId);
+    
+    // Load initial value from localStorage if exists
+    const saved = localStorage.getItem(storageKey);
+    if (saved) {
+        slider.value = saved;
+    }
+    
+    function update() {
+        const val = parseFloat(slider.value);
+        const min = parseFloat(slider.min);
+        const max = parseFloat(slider.max);
+        
+        // Update display text
+        display.textContent = val.toFixed(slider.step.includes('.') ? 1 : 0);
+        
+        // Update background gradient fill
+        const percentage = ((val - min) / (max - min)) * 100;
+        slider.style.background = `linear-gradient(90deg, #00f0ff ${percentage}%, rgba(0, 240, 255, 0.2) ${percentage}%)`;
+        
+        // Save to localStorage
+        localStorage.setItem(storageKey, val);
+    }
+    
+    slider.addEventListener('input', update);
+    // Initial call to set correct background/text on load
+    update();
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    updateSlider('temp-slider', 'temp-display', 'rag_temp');
+    updateSlider('p-slider', 'p-display', 'rag_top_p');
+    updateSlider('n-slider', 'n-display', 'rag_top_n');
+});
+</script>
+</body></html>
